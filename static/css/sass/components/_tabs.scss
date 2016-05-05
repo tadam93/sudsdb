@@ -1,0 +1,14 @@
+.nav.nav-pills{
+  .nav-link{
+    color: $navbar;
+  }
+  .nav-link:hover{
+    color: $link-hover;
+    font-weight: bold;
+    background-color: transparentize($navbar, .99);
+  }
+  .active .nav-link{
+    color: $link;
+    background-color: $navbar;
+  }
+}

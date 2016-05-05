@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='page' ng-controller="BeerListingsController">
+  <h1>List of Beers</h1>
+  <table class="table table-hover listing">
+    <thead>
+      <tr>
+        <th ng-click="applySort('beer.name')" >
+          Name
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'beer.name' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'beer.name' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('style.name')" >
+          Style
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'style.name' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'style.name' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('brewery.name')" >
+          Brewery
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'brewery.name' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'brewery.name' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('beer.abv')" >
+          ABV
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'beer.abv' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'beer.abv' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('beer.ibu')" >
+          IBU
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'beer.ibu' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'beer.ibu' && sortDir == 'asc'"></span>
+        </th>
+        <th>
+          SudsDB Page
+        </th>
+      </tr>
+    </thead>
+    <tbody ng-hide='loading'>
+      <tr ng-repeat="beer in beers">
+        <td>[[ beer.name ]]</td>
+        <td>[[ beer.style_name ]]</td>
+        <td>[[ beer.brewery_name ]]</td>
+        <td>[[ beer.abv ]]</td>
+        <td>[[ beer.ibu ]]</td>
+        <td><a href='/beers/[[ beer.beer_id ]]'>View</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class='cust-pagination'>
+    <button type='button' class='btn btn-default' ng-click="changePage('left')">
+      <span class='glyphicon glyphicon-arrow-left'></span>
+    </button>
+    <go-to-pagination current-page="currentPage" max-page="maxPage" go-to-page="goToPage(page)"></go-to-pagination>
+    <button type='button' class='btn btn-default' ng-click="changePage('right')">
+      <span class='glyphicon glyphicon-arrow-right'></span>
+    </button>
+  </div>
+  <img src='/media/loader.gif' class='loading-image' ng-show='loading' />
+</section>
+</section>
+{% endblock %}

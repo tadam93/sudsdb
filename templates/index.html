@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='search' ng-controller='SearchBarController'>
+  <div class='container-fluid'>
+    <h1>Welcome to <span class='brand'>Suds<strong>DB</strong></span></h1>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-keydown='checkButton($event)' placeholder="Search for Beers or Breweries" ng-model='text'>
+      <span class="input-group-btn">
+        <a href='/search/[[text]]' class="btn btn-default" type="button"><span class='glyphicon glyphicon-search'></span></a>
+      </span>
+    </div>
+  </div>
+</section>
+{% endblock %}

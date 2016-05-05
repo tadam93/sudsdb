@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='page' ng-controller='StyleListingsController'>
+  <h1>List of Styles</h1>
+  <table class="table table-hover listing">
+    <thead>
+      <tr>
+        <th ng-click="applySort('name')" >
+          Style
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'name' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'name' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('ibu_min')" >
+          Min IBU
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'ibu_min' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'ibu_min' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('ibu_max')" >
+          Max IBU
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'ibu_max' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'ibu_max' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('abv_min')" >
+          Min ABV
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'abv_min' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'abv_min' && sortDir == 'asc'"></span>
+        </th>
+        <th ng-click="applySort('abv_max')" >
+          Max ABV
+          <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'abv_max' && sortDir == 'desc'"></span>
+          <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'abv_max' && sortDir == 'asc'"></span>
+        </th>
+        <th>SudsDB Page</th>
+      </tr>
+    </thead>
+    <tbody ng-hide='loading'>
+      <tr ng-repeat="style in styles">
+        <td>[[ style.name ]]</td>
+        <td>[[ style.ibu_min ]]</td>
+        <td>[[ style.ibu_max ]]</td>
+        <td>[[ style.abv_min ? style.abv_min + "%" : ""]]</td>
+        <td>[[ style.abv_max ? style.abv_max + "%" : ""]]</td>
+        <td><a href='/styles/[[ style.style_id ]]'>View</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class='cust-pagination'>
+    <button type='button' class='btn btn-default' ng-click="changePage('left')">
+      <span class='glyphicon glyphicon-arrow-left'></span>
+    </button>
+    <go-to-pagination current-page="currentPage" max-page="maxPage" go-to-page="goToPage(page)"></go-to-pagination>
+    <button type='button' class='btn btn-default' ng-click="changePage('right')">
+      <span class='glyphicon glyphicon-arrow-right'></span>
+    </button>
+  </div>
+  <img src='/media/loader.gif' class='loading-image' ng-show='loading' />
+</section>
+{% endblock %}

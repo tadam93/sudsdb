@@ -1,0 +1,61 @@
+nav.navbar.navbar-default{
+  background-color: $navbar;
+  border: none;
+  border-radius: 0px;
+  margin: 0px;
+  padding: 0px 20px;
+  .navbar-toggle{
+    border-color: rgba(255, 255, 255, .5);
+    border-radius: 0px;
+    .icon-bar{
+      background-color: $navbar-accent;
+    }
+    &:hover, &:active, &:visited{
+      background-color: $navbar-accent;
+      .icon-bar{
+        background-color: $navbar;
+      }
+    }
+  }
+  .navbar-brand{
+    font-size: 24px;
+    &:hover{
+      opacity: .75;
+    }
+  }
+  .navbar-collapse{
+    border-top: none;
+  }
+  .navbar-form{
+    box-shadow: none;
+    border: none;
+    input, .btn{
+      border-radius: 0px;
+    }
+    .btn.btn-default{
+      height: 34px;
+      .glyphicon {
+        line-height: 20px;
+      }
+    }
+  }
+  ul{
+    border-top: 1px solid $navbar-accent;
+  }
+  ul > li > a:link{
+    color: $link;
+  }
+  ul > li > a:visited {
+    color: $link-visited;
+  }
+  ul > li > a:active{
+    color: $link-active;
+  }
+  ul > li > a:hover{
+    color: $link-hover;
+  }
+
+  #search-btn{
+    height: 34px;
+  }
+}

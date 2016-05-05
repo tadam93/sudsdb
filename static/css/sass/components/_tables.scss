@@ -1,0 +1,45 @@
+table.listing{
+  color: $table-font;
+  > tbody > tr > td, > thead > tr > th{
+    border-color: $table-border;
+  }
+  th{
+    color: $table-heading;
+    cursor: pointer;
+    font-weight: bolder;
+  }
+  tbody tr:hover{
+    background-color: rgba(0, 0, 0, .1);
+    cursor: pointer;
+  }
+  @media (max-width: 768px){
+    th, td{
+      display: none;
+    }
+    th:first-child, th:nth-child(2), td:first-child, td:nth-child(2){
+      display: table-cell;
+    }
+  }
+}
+table.breweries{
+  tr > td{
+    vertical-align: middle;
+  }
+}
+
+.grid{
+  height: 300px;
+  .ui-grid-header{
+    height: 33px;
+  }
+}
+tr.and-res{
+}
+tr.and-res:hover{
+}
+tr.or-res{
+    background-color: rgba(214, 145, 27, 0.34);
+}
+tr.or-res:hover{
+    background-color: rgba(0,0,0, .2);
+}

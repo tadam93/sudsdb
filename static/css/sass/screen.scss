@@ -1,0 +1,54 @@
+@import "compass/css3";
+@import "_colors.scss";
+@import "components/_about-person.scss";
+@import "components/_details.scss";
+@import "components/_dividers.scss";
+@import "components/_nav.scss";
+@import "components/_pagination.scss";
+@import "components/_sections.scss";
+@import "components/_style-panel.scss";
+@import "components/_tables.scss";
+@import "components/_tabs.scss";
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+html, body, p, span{
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .brand{
+  font-family: 'Oswald', sans-serif;
+}
+
+body{
+  background-attachment: fixed;
+  background-color: #776017; // Old browsers
+  @include filter-gradient(#e5ba2d, #776017, vertical); // IE6-9
+  @include background-image(linear-gradient(top,  #e5ba2d 0%,#776017 100%));
+
+  height: 100%;
+}
+body#splash{
+  background: url("/media/bg_beer.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+
+.brand{
+  color: rgb(255, 255, 255) !important;
+  strong{
+    color: rgb(185, 185, 185) !important;
+  }
+}
+
+.container-fluid{
+  max-width: 1200px;
+}
+
+.loading-image {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  width: 200px;
+}

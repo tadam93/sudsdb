@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='page details' id='style-details' ng-controller='StyleDetailsController'>
+  <div class='content'>
+    <h1>[[ style.name ]]</h1>
+    <p>
+      [[ style.description ]]
+    </p>
+  </div>
+  <div class='style-panel'>
+    <h4>Style Characteristics</h4>
+    <table>
+      <tr>
+        <td>Min. ABV:</td>
+        <td>[[ style.abv_min ]]%</td>
+      </tr>
+      <tr>
+        <td>Max. ABV:</td>
+        <td>[[ style.abv_max ]]%</td>
+      </tr>
+      <tr>
+        <td>Min. IBU:</td>
+        <td>[[ style.ibu_min ]]</td>
+      </tr>
+      <tr>
+        <td>Max. IBU:</td>
+        <td>[[ style.ibu_max ]]</td>
+      </tr>
+    </table>
+  </div>
+  <div class='beers content'>
+    <h2>A Sampling of Beers</h2>
+    <div class='beer-display-wrapper'>
+      <div class='beer' ng-repeat='beer in style.beers'>
+        <div class='front'>
+          <img src='[[ beer.image ]]' ng-show='beer.image'/>
+          <img src='/media/beer-placeholder.jpg' ng-hide='beer.image'/>
+        </div>
+        <a href='/beers/[[ beer.beer_id ]]'>
+          <div class='back'>
+            <div class='text'>
+              <h1>[[ beer.name ]]</h1>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

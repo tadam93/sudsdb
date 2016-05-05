@@ -1,0 +1,18 @@
+$navbar: rgb(71, 70, 67);
+$navbar-accent: rgba(255, 255, 255, .5);
+
+$input-btn: $navbar;
+$input-btn-text: white;
+
+$link: rgb(255, 255, 255);
+$link-hover: #e5ba2d;//rgba(255, 255, 255, .5);
+$link-visited: $link;
+$link-active: $link-hover;
+
+$heading: $navbar;
+
+$table-heading: $navbar;
+$table-border: $navbar;
+$table-font: rgb(71, 71, 71);
+
+$style-panel-color: lighten($navbar, 60%);

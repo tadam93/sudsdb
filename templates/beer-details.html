@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='page details' id='beer-details' ng-controller='BeerDetailsController'>
+  <div class='img-wrapper'>
+    <img src='[[ beer.image ]]' ng-show='beer.image'/>
+    <img src='/media/beer-placeholder.jpg' ng-hide='beer.image'/>
+  </div>
+  <div class='content'>
+    <h1>[[ beer.name ]]</h1>
+    <h2 ng-show='beer.brewery_id'>by <a href='/breweries/[[ beer.brewery_id ]]'>[[ beer.brewery_name ]]</a></h2>
+    <h5 ng-show='beer.serving_id'><span>Serving:</span> Serve in a Snifter at Cool - (8-12C/45-54F)</h5>
+    <h5 ng-show='beer.style_id'><span>Style:</span> <a href='/styles/[[ beer.style_id ]]'>[[ beer.style_name ]]</a></h5>
+    <p>[[ beer.description ]]
+    </p>
+    <div class='divider light-gray'></div>
+    <ul>
+      <li ng-show='beer.ibu'><img src='/media/hops.png'/>IBU: [[ beer.ibu ]]</li>
+      <li ng-show='beer.abv'><img src='/media/abv.png'/>ABV: [[ beer.abv ]]%</li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

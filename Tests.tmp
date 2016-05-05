@@ -1,0 +1,7 @@
+INFO: Starting run.py ...
+DEBUG: mysql+pymysql://None:None@None/None
+..............
+----------------------------------------------------------------------
+Ran 14 tests in 0.121s
+
+OK

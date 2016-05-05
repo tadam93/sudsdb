@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='page' ng-controller = "BreweryListingsController">
+  <h1>List of Breweries</h1>
+  <table class="table table-hover breweries listing">
+    <thead>
+      <tr>
+        <th>Icon</th>
+    		<th ng-click="applySort('name')" >
+    		  Name
+    		    <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'name' && sortDir == 'desc'"></span>
+                <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'name' && sortDir == 'asc'"></span>
+    		</th>
+    		<th ng-click="applySort('location')" >
+              Location
+    		    <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'location' && sortDir == 'desc'"></span>
+                <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'location' && sortDir == 'asc'"></span>
+    		</th>
+    		<th ng-click="applySort('established')" >
+              Brewing Since
+    		    <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'established' && sortDir == 'desc'"></span>
+                <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'established' && sortDir == 'asc'"></span>
+    		</th>
+    		<th ng-click="applySort('is_organic')" >
+              Organic?
+    		    <span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'is_organic' && sortDir == 'desc'"></span>
+              <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'is_organic' && sortDir == 'asc'"></span>
+    		</th>
+    		<th ng-click="applySort('website')" >
+              Website
+    			<span class='glyphicon glyphicon-arrow-down' ng-show="sortCol == 'website' && sortDir == 'desc'"></span>
+                <span class='glyphicon glyphicon-arrow-up' ng-show="sortCol == 'website' && sortDir == 'asc'"></span>
+    		</th>
+        <th>SudsDB page</th>
+      </tr>
+    </thead>
+    <tbody ng-hide='loading'>
+	  <tr ng-repeat="brewery in breweries">
+        <td><img src='[[ brewery.icon ]]'></td>
+        <td>[[ brewery.name ]]</td>
+        <td>[[ brewery.location ]]</td>
+        <td>[[ brewery.established ]]</td>
+        <td>[[ brewery.is_organic ]]</td>
+        <td><a href='[[ brewery.website ]]'>Website</a></td>
+        <td><a href='/breweries/[[ brewery.brewery_id ]]'>View</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class='cust-pagination'>
+    <button type='button' class='btn btn-default' ng-click="changePage('left')">
+      <span class='glyphicon glyphicon-arrow-left'></span>
+    </button>
+    <go-to-pagination current-page="currentPage" max-page="maxPage" go-to-page="goToPage(page)"></go-to-pagination>
+    <button type='button' class='btn btn-default' ng-click="changePage('right')">
+      <span class='glyphicon glyphicon-arrow-right'></span>
+    </button>
+  </div>
+  <img src='/media/loader.gif' class='loading-image' ng-show='loading' />
+</section>
+{% endblock %}

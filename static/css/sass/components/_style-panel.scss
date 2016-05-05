@@ -1,0 +1,23 @@
+.style-panel{
+  background-color: $style-panel-color;
+  table {
+    tr td{
+      line-height: 1.6em;
+      vertical-align: baseline;
+    }
+    td:first-child{
+      color: rgba(0, 0, 0, .5);
+      font-size: 14px;
+      font-weight: bold;
+      padding: 0 15px;
+      width: 105px;
+      text-align: right;
+    }
+    td{
+      font-size: 18px;
+      font-weight: bold;
+      padding: 0 15px;
+      width: 105px;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='page details' id='brewery-details' ng-controller='BreweryDetailsController'>
+  <div class='img-wrapper'>
+    <img src='[[ brewery.image ]]' />
+  </div>
+  <div class='content'>
+    <h1>[[ brewery.name ]]</h1>
+    <h5><span>Established:</span> [[ brewery.established ]]</h5>
+    <h5><span>Located:</span> [[ brewery.location ]]</h5>
+    <p>
+    [[ brewery.description ]]
+    </p>
+  </div>
+  <div class='divider light-gray'></div>
+  <div class='content'>
+    <h2>Beers by this Brewery</h2>
+    <div class='beer-display-wrapper'>
+      <div class='beer' ng-repeat='beer in brewery.beers'>
+        <div class='front'>
+          <img src='[[ beer.image ]]' ng-show='beer.image'/>
+          <img src='/media/beer-placeholder.jpg' ng-hide='beer.image'/>
+        </div>
+        <a href='/beers/[[ beer.beer_id ]]'>
+          <div class='back'>
+            <div class='text'>
+              <h1>[[ beer.name ]]</h1>
+              <h2>[[ beer.style_name ]]</h2>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class='divider light-gray'></div>
+  <div class='content' ng-show='brewery.location'>
+    <h2>Location</h2>
+    <iframe>
+    </iframe>
+  </div>
+</section>
+{% endblock %}

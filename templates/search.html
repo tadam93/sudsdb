@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class='page details' id='style-details' ng-controller='SearchController'>
+  <h4>Showing results for search "<strong>[[ searchTerm ]]</strong>" in [[ category ]]</h4>
+  <uib-tabset active="activePill" vertical="false" type="pills">
+    <uib-tab index="0" heading="Beers" select='execNewSearch("beers")'>
+      <table class="table table-hover listing">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Style</th>
+            <th>Description</th>
+            <th>Brewery</th>
+            <th>ABV</th>
+            <th>IBU</th>
+            <th>Page</th>
+          </tr>
+        </thead>
+        <tbody ng-hide='loading'>
+          <tr ng-repeat="beer in data.results" class='[[ beer.rclass ]]'>
+            <td ng-bind-html='beer.name'></td>
+            <td ng-bind-html='beer.style_name'></td>
+            <td ng-bind-html='beer.description'></td>
+            <td ng-bind-html='beer.brewery_name'></td>
+            <td>[[ beer.abv ]]</td>
+            <td>[[ beer.ibu ]]</td>
+            <td><a href='/beers/[[ beer.beer_id ]]'>View</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </uib-tab>
+    <uib-tab index="1" heading="Breweries" select='execNewSearch("breweries")'>
+    <table class="table table-hover breweries listing">
+      <thead>
+        <tr>
+          <th>Icon</th>
+      		<th>Name</th>
+          <th>Description</th>
+      		<th>Location</th>
+      		<th>Brewing Since</th>
+      		<th>Organic?</th>
+      		<th>Website</th>
+          <th>Page</th>
+        </tr>
+      </thead>
+      <tbody ng-hide='loading'>
+  	     <tr ng-repeat="brewery in data.results" class='[[ brewery.rclass ]]'>
+          <td><img src='[[ brewery.icon ]]'></td>
+          <td ng-bind-html='brewery.name'></td>
+          <td ng-bind-html='brewery.description'></td>
+          <td ng-bind-html='brewery.location'></td>
+          <td ng-bind-html='brewery.established'></td>
+          <td ng-bind-html='brewery.is_organic'></td>
+          <td><a href='[[ brewery.website ]]'>Website</a></td>
+          <td><a href='/breweries/[[ brewery.brewery_id ]]'>View</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </uib-tab>
+    <uib-tab index="2" heading="Styles" select='execNewSearch("styles")'>
+      <table class="table table-hover listing">
+        <thead>
+          <tr>
+            <th>Style</th>
+            <th>Description</th>
+            <th>Min IBU</th>
+            <th>Max IBU</th>
+            <th>Min ABV</th>
+            <th>Max ABV</th>
+            <th>Page</th>
+          </tr>
+        </thead>
+        <tbody ng-hide='loading'>
+          <tr ng-repeat="style in data.results" class='[[ style.rclass ]]'>
+            <td ng-bind-html='style.name'></td>
+            <td ng-bind-html='style.description'></td>
+            <td>[[ style.ibu_min ]]</td>
+            <td>[[ style.ibu_max ]]</td>
+            <td>[[ style.abv_min ? style.abv_min + "%" : "" ]]</td>
+            <td>[[ style.abv_max ? style.abv_max + "%" : "" ]]</td>
+            <td><a href='/styles/[[ style.style_id ]]'>View</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </uib-tab>
+  </uib-tabset>
+  <div class='cust-pagination'>
+    <button type='button' class='btn btn-default' ng-click="changePage('left')">
+      <span class='glyphicon glyphicon-arrow-left'></span>
+    </button>
+    <go-to-pagination current-page="currentPage" max-page="maxPage" go-to-page="goToPage(page)"></go-to-pagination>
+    <button type='button' class='btn btn-default' ng-click="changePage('right')">
+      <span class='glyphicon glyphicon-arrow-right'></span>
+    </button>
+  </div>
+  <table class="table">
+    <tr  class="and-res">
+        <td> AND results </td>
+    </tr>
+    <tr class="or-res">
+        <td> OR results </td>
+    </tr>
+  </table>
+</section>
+{% endblock %}
