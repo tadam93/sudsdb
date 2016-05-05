@@ -4,6 +4,13 @@ import os
 from flask import Flask, render_template
 from flask.ext.script import Manager
 from flask.ext.sqlalchemy import SQLAlchemy
+import yaml
+
+with open("example.yaml", 'r') as stream:
+    try:
+        print(yaml.load(stream))
+    except yaml.YAMLError as exc:
+        print(exc)
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -14,11 +21,11 @@ logger.info("Starting run.py ...")
 SQLALCHEMY_DATABASE_URI = \
     '{engine}://{username}:{password}@{host}/{database}'.format(
         engine='mysql+pymysql',
-        username='root',
-        password='root',
-        host='localhost',
-        port='3306',
-        database='sudsdb')
+        username='',
+        password='',
+        host='',
+        port='',
+        database='')
 
 logger.debug("%s", SQLALCHEMY_DATABASE_URI)
 
